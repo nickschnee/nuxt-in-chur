@@ -1,7 +1,7 @@
 <template>
   <div class="">
 
-    <h1 class="">Willkommen im MMP Shop</h1>
+    <h1 class="text-red-500">Willkommen im MMP Shop</h1>
 
     <h2 class="my-8"> Meine Shop-Wishlist</h2>
 
