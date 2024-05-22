@@ -38,6 +38,8 @@ const {
   () => $fetch(`https://fakestoreapi.com/products/${route.params.id}`)
 );
 
+// const {data:product } = await useFetch(`https://fakestoreapi.com/products/${route.params.id}`);
+
 console.log(product.value);
 
 useHead({
