@@ -12,7 +12,7 @@
       <option value="EUR">EUR</option>
     </select>
 
-    <label  for=""> To Currency</label>
+    <label for=""> To Currency</label>
     <select @change="clearOutput" v-model="toCurrency">
       <option value="USD">USD</option>
       <option value="CHF">CHF</option>
@@ -22,14 +22,28 @@
 
     <button @click="fetchExchange">Give Exchangerate!</button>
 
-    <p v-if="exchangeRate != 0"> 1 {{ fromCurrency }} entspricht {{ exchangeRate }} {{ toCurrency }}</p>
-    
+    <p
+      :class="{
+        'text-red-500': exchangeRate < 1,
+        'text-green-500': exchangeRate > 1,
+      }"
+      v-if="exchangeRate != 0"
+    >
+      1 {{ fromCurrency }} entspricht {{ exchangeRate }} {{ toCurrency }}
+    </p>
   </div>
 </template>
 
 <script setup>
+
+definePageMeta({
+  pageTransition: {
+    name: 'blur'
+  }
+})
+
 const fromCurrency = ref("USD");
-const toCurrency = ref("USD"); 
+const toCurrency = ref("USD");
 
 const exchangeRate = ref(0);
 
@@ -42,14 +56,16 @@ const fetchExchange = async () => {
     `/api/currency?fromCurrency=${fromCurrency.value}&toCurrency=${toCurrency.value}`
   );
 
-//   console.log(currencies.value.message[toCurrency.value].value);
+  //console.log(currencies.value.message[toCurrency.value].value);
 
   exchangeRate.value = currencies.value.message[toCurrency.value].value;
 
   exchangeRate.value = exchangeRate.value.toFixed(2);
-
 };
-
 </script>
 
-<style scoped></style>
+<style scoped>
+.red {
+  color: red;
+}
+</style>

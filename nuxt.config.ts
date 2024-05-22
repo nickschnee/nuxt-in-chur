@@ -6,9 +6,10 @@ export default defineNuxtConfig({
     '~/assets/css/style.css',
   ],
 
-  modules: ["@nuxtjs/tailwindcss"],
+  modules: ["@nuxtjs/tailwindcss", "@hypernym/nuxt-anime"],
 
   app: {
+    pageTransition: { name: 'page', mode: 'out-in' },
     head: {
       title: 'MMP Shop',
       meta: [
@@ -20,7 +21,10 @@ export default defineNuxtConfig({
           name: 'viewport',
           content: 'width=device-width, initial-scale=1'
         }
-      ]
+      ],
+      link: [
+        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons' }
+      ],
     }
   }
 })

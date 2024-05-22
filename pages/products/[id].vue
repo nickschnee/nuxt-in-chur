@@ -42,11 +42,19 @@ const {
 
 console.log(product.value);
 
+if (error.value || !product.value) {
+  // fatal forces the app to show the error page
+  throw createError({
+    statusCode: 404,
+    message: "Product not found",
+    fatal: true,
+  });
+}
+
 useHead({
   title: `${product.value.title} - MMP Shop`,
-  meta: [
-    { name: 'description', content: 'My amazing site.' }
-  ],});
+  meta: [{ name: "description", content: "My amazing site." }],
+});
 </script>
 
 <style scoped></style>

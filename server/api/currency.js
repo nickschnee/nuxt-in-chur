@@ -4,7 +4,6 @@ export default defineEventHandler(async (event) => {
 
     const { fromCurrency, toCurrency } = getQuery(event);
 
-
     console.log(fromCurrency);
     console.log(fromCurrency);
 
