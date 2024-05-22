@@ -4,6 +4,8 @@ export default defineEventHandler(async (event) => {
 
     const { fromCurrency, toCurrency } = getQuery(event);
 
+
+    console.log(fromCurrency);
     console.log(fromCurrency);
 
     const url = `https://api.currencyapi.com/v3/latest?apikey=${apiKey}&base_currency=${fromCurrency}&currencies=${toCurrency}`;
